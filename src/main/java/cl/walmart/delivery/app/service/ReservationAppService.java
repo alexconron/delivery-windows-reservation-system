@@ -131,6 +131,7 @@ public class ReservationAppService {
             int capacity,
             long reserved,
             long remaining
+            long remaining
     ) {
     }
 }

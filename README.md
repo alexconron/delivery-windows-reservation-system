@@ -85,9 +85,21 @@ Respuestas esperadas:
 
 ---
 
-## 🖥️ Frontend (Opcional)
+## 🖥️ Frontend
 
-El frontend permite visualizar y probar el flujo completo de consulta y reserva, incluyendo escenarios de concurrencia.
+El frontend ha sido refactorizado para ofrecer una experiencia premium y administrativa.
+
+### Características del Frontend
+
+1. **Cliente / Reserva**:
+   - Selector inteligente de comuna (con opción manual).
+   - Visualización de precios y cupos en tiempo real.
+   - Feedback inmediato de carga y éxito.
+
+2. **Panel de Administración (`/admin`)**:
+   - Dashboard con KPIs de ocupación y cobertura.
+   - Detalle de ventanas por comuna (Santiago, Providencia, Las Condes).
+   - Monitoreo visual de capacidad restante.
 
 ### Ejecución
 
@@ -97,20 +109,14 @@ npm install
 npm run dev
 ```
 
-La aplicación se levanta normalmente en:
+La aplicación se levanta en:
 
 ```
 http://localhost:5173
 ```
 
-### Comportamiento bajo concurrencia (UX)
-
-* Múltiples usuarios pueden ver el mismo cupo disponible.
-* Si dos usuarios intentan reservar simultáneamente:
-
-  * Solo uno obtiene la reserva.
-  * El otro recibe un **409 – Cupo agotado**, mostrado como mensaje funcional en la interfaz.
-* El frontend refresca el estado tras cada intento, evitando estados inconsistentes.
+- **Ruta Principal**: `http://localhost:5173/` (Reserva)
+- **Panel Admin**: `http://localhost:5173/admin`
 
 ---
 
@@ -144,5 +150,3 @@ El proyecto incluye pruebas que simulan múltiples reservas concurrentes sobre l
 
 * Nunca se supera la capacidad máxima.
 * Las reservas excedentes reciben error de negocio (`409's`).
-
----
